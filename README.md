@@ -18,8 +18,9 @@ Dockerized for easy deployment.
 
 ```bash
 docker build -t ses-mailer .
+```
 
-Run with AWS credentials:
+### Run with AWS credentials:
 ```bash
 docker run -p 3000:3000 \
   -e AWS_ACCESS_KEY_ID=your-access-key \
@@ -28,15 +29,17 @@ docker run -p 3000:3000 \
   -e AWS_REGION=us-east-1 \
   -e SES_SOURCE_EMAIL=verified-sender@example.com \
   ses-mailer
+```
 
-Run with IAM Role (on EC2 or ECS)
+### Run with IAM Role (on EC2 or ECS)
 ```bash
 docker run -p 3000:3000 \
   -e AWS_REGION=us-east-1 \
   -e SES_SOURCE_EMAIL=verified-sender@example.com \
   ses-mailer
+```
 
-Call the API
+### Call the API
 Open in your browser or use curl:
 http://localhost:3000/send-email?to=recipient@example.com
 
