@@ -22,19 +22,21 @@ docker build -t ses-mailer .
 
 ### Run with AWS credentials:
 ```bash
-docker run -p 3000:3000 \
+docker run -d --rm -p 3000:3000 \
+  -e PORT=your-port \
   -e AWS_ACCESS_KEY_ID=your-access-key \
   -e AWS_SECRET_ACCESS_KEY=your-secret-key \
   -e AWS_SESSION_TOKEN=your-session-token \
-  -e AWS_REGION=us-east-1 \
+  -e AWS_REGION=your-aws-region \
   -e SES_SOURCE_EMAIL=verified-sender@example.com \
   ses-mailer
 ```
 
 ### Run with IAM Role (on EC2 or ECS)
 ```bash
-docker run -p 3000:3000 \
-  -e AWS_REGION=us-east-1 \
+docker run -d --rm -p 3000:3000 \
+  -e PORT=your-port
+  -e AWS_REGION=your-aws-reqion \
   -e SES_SOURCE_EMAIL=verified-sender@example.com \
   ses-mailer
 ```
